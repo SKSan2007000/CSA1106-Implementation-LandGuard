@@ -1,0 +1,13 @@
+{
+  "name": "landguard-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LandGuard AI — Predictive Analytics System for Early Detection of Land Acquisition Delays (SIH26017)",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix frontend run start",
+    "lint": "npm --prefix frontend run lint",
+    "typecheck": "npm --prefix frontend run typecheck"
+  }
+}
