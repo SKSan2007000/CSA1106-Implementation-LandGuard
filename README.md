@@ -24,51 +24,6 @@ LANDGUARD/
 
 ## Production Deployment Guide
 
-### 1. Backend Deployment (Railway)
-
-1. **Create a New Project on Railway**:
-   - Link your GitHub repository.
-   - Set the **Root Directory** to `backend`.
-2. **Environment Variables**:
-   Add the following variables in the Railway dashboard:
-   - `PORT`: `8000` (or leave default auto-assigned `$PORT`)
-   - `DATABASE_URL`: Your PostgreSQL connection string (or use default SQLite for instant portability)
-   - `SECRET_KEY`: A strong JWT signing key (e.g. `landguard-super-secret-key-2026`)
-   - `ALGORITHM`: `HS256`
-   - `FRONTEND_URL`: Your Vercel frontend URL (e.g. `https://landguard.vercel.app`)
-   - `BACKEND_CORS_ORIGINS`: `https://landguard.vercel.app,http://localhost:3000`
-3. **Start Command**:
-   Railway automatically detects `backend/railway.json` and `backend/Procfile`:
-   ```bash
-   uvicorn main:app --host 0.0.0.0 --port $PORT
-   ```
-4. **Health Check Endpoint**:
-   - Path: `/health`
-   - Response: `{"status": "ok", "service": "LandGuard API"}`
-5. **Interactive Swagger Docs**:
-   - Path: `/docs`
-
----
-
-### 2. Frontend Deployment (Vercel)
-
-1. **Import Repository into Vercel**:
-   - Link your GitHub repository.
-   - Set the **Root Directory** to `frontend`.
-   - Framework Preset: **Next.js**.
-2. **Environment Variables**:
-   Add the following variable in Vercel settings:
-   - `NEXT_PUBLIC_API_URL`: `https://<your-backend>.up.railway.app`
-   - `NEXT_PUBLIC_API_BASE_URL`: `https://<your-backend>.up.railway.app`
-3. **Build Settings**:
-   - Build Command: `npm run build` (runs prebuild Cesium asset copy + Next.js build)
-   - Output Directory: `.next`
-   - Install Command: `npm install`
-4. **Deploy**:
-   - Click **Deploy**. Vercel will build all 34 routes statically and handle client-side routing.
-
----
-
 ## Local Development Setup
 
 ### Prerequisites
